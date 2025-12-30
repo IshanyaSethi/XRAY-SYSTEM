@@ -1,0 +1,4 @@
+# PostgreSQL dependencies (optional - only needed if using PostgreSQL storage)
+# psycopg2-binary==2.9.9  # Uncomment if you need PostgreSQL support
+python-dotenv==1.0.0
+
