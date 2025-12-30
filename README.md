@@ -64,7 +64,7 @@ For detailed setup instructions, see [RUN.md](RUN.md).
 - **Trade-off**: No live updates, less engaging for monitoring
 - **Future**: WebSocket support for real-time execution tracking
 
-### Planned Improvements
+### Improvements
 
 **Performance**
 - Server-side rendering for faster initial loads
