@@ -1,0 +1,10 @@
+README.md
+setup.py
+xray_sdk/__init__.py
+xray_sdk/core.py
+xray_sdk/storage.py
+xray_sdk/storage_postgres.py
+xray_sdk.egg-info/PKG-INFO
+xray_sdk.egg-info/SOURCES.txt
+xray_sdk.egg-info/dependency_links.txt
+xray_sdk.egg-info/top_level.txt

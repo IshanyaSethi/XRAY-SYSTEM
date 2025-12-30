@@ -1,0 +1,319 @@
+{
+  "execution_id": "a7334900-6dbf-478e-817c-7652f99085cf",
+  "name": "competitor_selection",
+  "steps": [
+    {
+      "name": "keyword_generation",
+      "inputs": {
+        "product_title": "Plastic Reusable Water Bottle 24oz",
+        "category": "Sports & Outdoors"
+      },
+      "outputs": {
+        "keywords": [
+          "plastic reusable water bottle 24oz",
+          "water bottle",
+          "plastic",
+          "24oz",
+          "reusable bottle",
+          "hydration bottle",
+          "sports bottle"
+        ],
+        "model": "gpt-4 (simulated)",
+        "keyword_count": 7
+      },
+      "reasoning": "Generated 7 keywords using product_type_match - matched product type: water bottle",
+      "metadata": {
+        "extraction_method": "product_type_match",
+        "matched_product_type": "water bottle",
+        "matched_category": null,
+        "keyword_count_before_dedup": 7,
+        "keyword_count_after_dedup": 7
+      },
+      "timestamp": "2025-12-29T20:11:35.610758",
+      "duration_ms": 0.025987625122070312
+    },
+    {
+      "name": "candidate_search",
+      "inputs": {
+        "search_keyword": "plastic reusable water bottle 24oz",
+        "category_filter": "Sports & Outdoors",
+        "limit": 3
+      },
+      "outputs": {
+        "total_results_available": 2847,
+        "candidates_fetched": 3,
+        "status": "success",
+        "candidates": [
+          {
+            "asin": "B0COMP01",
+            "title": "HydroFlask 32oz Wide Mouth",
+            "price": 44.99,
+            "rating": 4.5,
+            "reviews": 8932,
+            "category": "Sports & Outdoors"
+          },
+          {
+            "asin": "B0COMP02",
+            "title": "Yeti Rambler 26oz",
+            "price": 34.99,
+            "rating": 4.4,
+            "reviews": 5621,
+            "category": "Sports & Outdoors"
+          },
+          {
+            "asin": "B0COMP03",
+            "title": "Replacement Lid for HydroFlask",
+            "price": 12.99,
+            "rating": 4.6,
+            "reviews": 3421,
+            "category": "Accessories"
+          }
+        ]
+      },
+      "reasoning": "Searched using keyword 'plastic reusable water bottle 24oz' in category 'Sports & Outdoors': found 3 unique candidates (2847 total matches available - mock data)",
+      "metadata": {},
+      "timestamp": "2025-12-29T20:11:35.711888",
+      "duration_ms": 101.07421875
+    },
+    {
+      "name": "apply_filters",
+      "inputs": {
+        "candidates_count": 3,
+        "reference_product": {
+          "asin": "DEMO-Plastic Re",
+          "title": "Plastic Reusable Water Bottle 24oz",
+          "price": 9.99,
+          "category": "Sports & Outdoors"
+        },
+        "filter_criteria": {
+          "price_range": {
+            "min": 4.995,
+            "max": 19.98
+          },
+          "min_rating": 3.8,
+          "min_reviews": 100
+        }
+      },
+      "outputs": {
+        "total_evaluated": 3,
+        "passed": 1,
+        "failed": 2,
+        "status": "success"
+      },
+      "reasoning": "Applied 3 filters to 3 candidates: 1 passed, 2 failed (2 failed price_range)",
+      "metadata": {
+        "filters_applied": {
+          "price_range": {
+            "min": 4.995,
+            "max": 19.98,
+            "rule": "0.5x - 2x of reference price"
+          },
+          "min_rating": {
+            "value": 3.8,
+            "rule": "Must be at least 3.8 stars"
+          },
+          "min_reviews": {
+            "value": 100,
+            "rule": "Must have at least 100 reviews"
+          }
+        },
+        "evaluations": [
+          {
+            "asin": "B0COMP01",
+            "title": "HydroFlask 32oz Wide Mouth",
+            "metrics": {
+              "price": 44.99,
+              "rating": 4.5,
+              "reviews": 8932
+            },
+            "filter_results": {
+              "price_range": {
+                "passed": false,
+                "detail": "$44.99 is outside $5.00-$19.98"
+              },
+              "min_rating": {
+                "passed": true,
+                "detail": "4.5 >= 3.8 threshold"
+              },
+              "min_reviews": {
+                "passed": true,
+                "detail": "8932 >= 100 minimum"
+              }
+            },
+            "qualified": false
+          },
+          {
+            "asin": "B0COMP02",
+            "title": "Yeti Rambler 26oz",
+            "metrics": {
+              "price": 34.99,
+              "rating": 4.4,
+              "reviews": 5621
+            },
+            "filter_results": {
+              "price_range": {
+                "passed": false,
+                "detail": "$34.99 is outside $5.00-$19.98"
+              },
+              "min_rating": {
+                "passed": true,
+                "detail": "4.4 >= 3.8 threshold"
+              },
+              "min_reviews": {
+                "passed": true,
+                "detail": "5621 >= 100 minimum"
+              }
+            },
+            "qualified": false
+          },
+          {
+            "asin": "B0COMP03",
+            "title": "Replacement Lid for HydroFlask",
+            "metrics": {
+              "price": 12.99,
+              "rating": 4.6,
+              "reviews": 3421
+            },
+            "filter_results": {
+              "price_range": {
+                "passed": true,
+                "detail": "$12.99 is within $5.00-$19.98"
+              },
+              "min_rating": {
+                "passed": true,
+                "detail": "4.6 >= 3.8 threshold"
+              },
+              "min_reviews": {
+                "passed": true,
+                "detail": "3421 >= 100 minimum"
+              }
+            },
+            "qualified": true
+          }
+        ],
+        "failed_by_filter": {
+          "price_range": 2,
+          "min_rating": 0,
+          "min_reviews": 0
+        },
+        "failed_candidates": [
+          {
+            "asin": "B0COMP01",
+            "title": "HydroFlask 32oz Wide Mouth",
+            "failed_filters": [
+              "price_range"
+            ],
+            "metrics": {
+              "price": 44.99,
+              "rating": 4.5,
+              "reviews": 8932
+            }
+          },
+          {
+            "asin": "B0COMP02",
+            "title": "Yeti Rambler 26oz",
+            "failed_filters": [
+              "price_range"
+            ],
+            "metrics": {
+              "price": 34.99,
+              "rating": 4.4,
+              "reviews": 5621
+            }
+          }
+        ]
+      },
+      "timestamp": "2025-12-29T20:11:35.711984",
+      "duration_ms": 0.03910064697265625
+    },
+    {
+      "name": "llm_relevance_evaluation",
+      "inputs": {
+        "candidates_count": 1,
+        "reference_category": "Sports & Outdoors",
+        "model": "gpt-4 (simulated)"
+      },
+      "outputs": {
+        "total_evaluated": 1,
+        "confirmed_competitors": 0,
+        "false_positives_removed": 1,
+        "status": "no_competitors_found"
+      },
+      "reasoning": "Evaluated 1 candidates, removed 1 false positives: 1 due to title contains 'replacement' - likely a replacement part, not a main product, 1 due to category mismatch",
+      "metadata": {
+        "evaluations": [
+          {
+            "asin": "B0COMP03",
+            "title": "Replacement Lid for HydroFlask",
+            "category": "Accessories",
+            "is_competitor": false,
+            "confidence": 0.85,
+            "rejection_reasons": [
+              "title contains 'replacement' - likely a replacement part, not a main product",
+              "category mismatch: 'Accessories' != 'Sports & Outdoors'"
+            ]
+          }
+        ],
+        "rejected_candidates": [
+          {
+            "asin": "B0COMP03",
+            "title": "Replacement Lid for HydroFlask",
+            "rejection_reasons": [
+              "title contains 'replacement' - likely a replacement part, not a main product",
+              "category mismatch: 'Accessories' != 'Sports & Outdoors'"
+            ]
+          }
+        ],
+        "rejection_summary": {
+          "title contains 'replacement' - likely a replacement part, not a main product": 1,
+          "category mismatch": 1
+        }
+      },
+      "timestamp": "2025-12-29T20:11:35.916295",
+      "duration_ms": 204.2391300201416
+    },
+    {
+      "name": "rank_and_select",
+      "inputs": {
+        "candidates_count": 0,
+        "reference_product": {
+          "asin": "DEMO-Plastic Re",
+          "title": "Plastic Reusable Water Bottle 24oz",
+          "price": 9.99
+        },
+        "ranking_weights": {
+          "review_count": 0.5,
+          "rating": 0.3,
+          "price_proximity": 0.2
+        }
+      },
+      "outputs": {
+        "selected_competitor": null,
+        "ranked_count": 0,
+        "status": "no_competitor_found",
+        "reason": "no_candidates_available"
+      },
+      "reasoning": "No competitor selected: empty candidate list",
+      "metadata": {
+        "ranking_criteria": {
+          "primary": "review_count",
+          "secondary": "rating",
+          "tertiary": "price_proximity"
+        },
+        "ranking_weights": {
+          "review_count": 0.5,
+          "rating": 0.3,
+          "price_proximity": 0.2
+        },
+        "ranked_candidates": []
+      },
+      "timestamp": "2025-12-29T20:11:35.916339",
+      "duration_ms": 0.0030994415283203125
+    }
+  ],
+  "started_at": "2025-12-29T20:11:35.610714",
+  "ended_at": "2025-12-29T20:11:35.916347",
+  "metadata": {
+    "reference_product_id": "DEMO-Plastic Re"
+  }
+}

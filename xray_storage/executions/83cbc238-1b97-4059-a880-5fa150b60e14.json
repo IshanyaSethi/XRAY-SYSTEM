@@ -1,0 +1,347 @@
+{
+  "execution_id": "83cbc238-1b97-4059-a880-5fa150b60e14",
+  "name": "competitor_selection",
+  "steps": [
+    {
+      "name": "keyword_generation",
+      "inputs": {
+        "product_title": "Stainless Steel Water Bottle 32oz Insulated",
+        "category": "Sports & Outdoors"
+      },
+      "outputs": {
+        "keywords": [
+          "stainless steel water bottle 32oz insulated",
+          "insulated bottle",
+          "stainless steel",
+          "32oz",
+          "reusable bottle",
+          "hydration bottle",
+          "sports bottle"
+        ],
+        "model": "gpt-4 (simulated)",
+        "keyword_count": 7
+      },
+      "reasoning": "Generated 7 keywords using product_type_match - matched product type: water bottle",
+      "metadata": {
+        "extraction_method": "product_type_match",
+        "matched_product_type": "water bottle",
+        "matched_category": null,
+        "keyword_count_before_dedup": 7,
+        "keyword_count_after_dedup": 7
+      },
+      "timestamp": "2025-12-29T20:04:45.652660",
+      "duration_ms": 0.03790855407714844
+    },
+    {
+      "name": "candidate_search",
+      "inputs": {
+        "search_keyword": "stainless steel water bottle 32oz insulated",
+        "category_filter": "Sports & Outdoors",
+        "limit": 3
+      },
+      "outputs": {
+        "total_results_available": 2847,
+        "candidates_fetched": 3,
+        "status": "success",
+        "candidates": [
+          {
+            "asin": "B0COMP01",
+            "title": "HydroFlask 32oz Wide Mouth",
+            "price": 44.99,
+            "rating": 4.5,
+            "reviews": 8932,
+            "category": "Sports & Outdoors"
+          },
+          {
+            "asin": "B0COMP02",
+            "title": "Yeti Rambler 26oz",
+            "price": 34.99,
+            "rating": 4.4,
+            "reviews": 5621,
+            "category": "Sports & Outdoors"
+          },
+          {
+            "asin": "B0COMP03",
+            "title": "Replacement Lid for HydroFlask",
+            "price": 12.99,
+            "rating": 4.6,
+            "reviews": 3421,
+            "category": "Accessories"
+          }
+        ]
+      },
+      "reasoning": "Searched using keyword 'stainless steel water bottle 32oz insulated' in category 'Sports & Outdoors': found 3 unique candidates (2847 total matches available - mock data)",
+      "metadata": {},
+      "timestamp": "2025-12-29T20:04:45.757796",
+      "duration_ms": 105.07392883300781
+    },
+    {
+      "name": "apply_filters",
+      "inputs": {
+        "candidates_count": 3,
+        "reference_product": {
+          "asin": "DEMO-Stainless ",
+          "title": "Stainless Steel Water Bottle 32oz Insulated",
+          "price": 29.99,
+          "category": "Sports & Outdoors"
+        },
+        "filter_criteria": {
+          "price_range": {
+            "min": 14.995,
+            "max": 59.98
+          },
+          "min_rating": 3.8,
+          "min_reviews": 100
+        }
+      },
+      "outputs": {
+        "total_evaluated": 3,
+        "passed": 2,
+        "failed": 1,
+        "status": "success"
+      },
+      "reasoning": "Applied 3 filters to 3 candidates: 2 passed, 1 failed (1 failed price_range)",
+      "metadata": {
+        "filters_applied": {
+          "price_range": {
+            "min": 14.995,
+            "max": 59.98,
+            "rule": "0.5x - 2x of reference price"
+          },
+          "min_rating": {
+            "value": 3.8,
+            "rule": "Must be at least 3.8 stars"
+          },
+          "min_reviews": {
+            "value": 100,
+            "rule": "Must have at least 100 reviews"
+          }
+        },
+        "evaluations": [
+          {
+            "asin": "B0COMP01",
+            "title": "HydroFlask 32oz Wide Mouth",
+            "metrics": {
+              "price": 44.99,
+              "rating": 4.5,
+              "reviews": 8932
+            },
+            "filter_results": {
+              "price_range": {
+                "passed": true,
+                "detail": "$44.99 is within $14.99-$59.98"
+              },
+              "min_rating": {
+                "passed": true,
+                "detail": "4.5 >= 3.8 threshold"
+              },
+              "min_reviews": {
+                "passed": true,
+                "detail": "8932 >= 100 minimum"
+              }
+            },
+            "qualified": true
+          },
+          {
+            "asin": "B0COMP02",
+            "title": "Yeti Rambler 26oz",
+            "metrics": {
+              "price": 34.99,
+              "rating": 4.4,
+              "reviews": 5621
+            },
+            "filter_results": {
+              "price_range": {
+                "passed": true,
+                "detail": "$34.99 is within $14.99-$59.98"
+              },
+              "min_rating": {
+                "passed": true,
+                "detail": "4.4 >= 3.8 threshold"
+              },
+              "min_reviews": {
+                "passed": true,
+                "detail": "5621 >= 100 minimum"
+              }
+            },
+            "qualified": true
+          },
+          {
+            "asin": "B0COMP03",
+            "title": "Replacement Lid for HydroFlask",
+            "metrics": {
+              "price": 12.99,
+              "rating": 4.6,
+              "reviews": 3421
+            },
+            "filter_results": {
+              "price_range": {
+                "passed": false,
+                "detail": "$12.99 is outside $14.99-$59.98"
+              },
+              "min_rating": {
+                "passed": true,
+                "detail": "4.6 >= 3.8 threshold"
+              },
+              "min_reviews": {
+                "passed": true,
+                "detail": "3421 >= 100 minimum"
+              }
+            },
+            "qualified": false
+          }
+        ],
+        "failed_by_filter": {
+          "price_range": 1,
+          "min_rating": 0,
+          "min_reviews": 0
+        },
+        "failed_candidates": [
+          {
+            "asin": "B0COMP03",
+            "title": "Replacement Lid for HydroFlask",
+            "failed_filters": [
+              "price_range"
+            ],
+            "metrics": {
+              "price": 12.99,
+              "rating": 4.6,
+              "reviews": 3421
+            }
+          }
+        ]
+      },
+      "timestamp": "2025-12-29T20:04:45.758000",
+      "duration_ms": 0.08511543273925781
+    },
+    {
+      "name": "llm_relevance_evaluation",
+      "inputs": {
+        "candidates_count": 2,
+        "reference_category": "Sports & Outdoors",
+        "model": "gpt-4 (simulated)"
+      },
+      "outputs": {
+        "total_evaluated": 2,
+        "confirmed_competitors": 2,
+        "false_positives_removed": 0,
+        "status": "success"
+      },
+      "reasoning": "All 2 candidates passed relevance evaluation - no false positives detected",
+      "metadata": {
+        "evaluations": [
+          {
+            "asin": "B0COMP01",
+            "title": "HydroFlask 32oz Wide Mouth",
+            "category": "Sports & Outdoors",
+            "is_competitor": true,
+            "confidence": 0.95,
+            "accepted_reason": "Passed all checks: main product in category 'Sports & Outdoors'"
+          },
+          {
+            "asin": "B0COMP02",
+            "title": "Yeti Rambler 26oz",
+            "category": "Sports & Outdoors",
+            "is_competitor": true,
+            "confidence": 0.95,
+            "accepted_reason": "Passed all checks: main product in category 'Sports & Outdoors'"
+          }
+        ],
+        "rejected_candidates": [],
+        "rejection_summary": {}
+      },
+      "timestamp": "2025-12-29T20:04:45.963159",
+      "duration_ms": 205.11102676391602
+    },
+    {
+      "name": "rank_and_select",
+      "inputs": {
+        "candidates_count": 2,
+        "reference_product": {
+          "asin": "DEMO-Stainless ",
+          "title": "Stainless Steel Water Bottle 32oz Insulated",
+          "price": 29.99
+        },
+        "ranking_weights": {
+          "review_count": 0.5,
+          "rating": 0.3,
+          "price_proximity": 0.2
+        }
+      },
+      "outputs": {
+        "selected_competitor": {
+          "asin": "B0COMP01",
+          "title": "HydroFlask 32oz Wide Mouth",
+          "metrics": {
+            "price": 44.99,
+            "rating": 4.5,
+            "reviews": 8932
+          },
+          "score_breakdown": {
+            "review_count_score": 0.8932,
+            "rating_score": 0.75,
+            "price_proximity_score": 0.4998332777592529
+          },
+          "total_score": 0.7715666555518506,
+          "rank": 1
+        },
+        "ranked_count": 2,
+        "status": "competitor_selected"
+      },
+      "reasoning": "Selected 'HydroFlask 32oz Wide Mouth' (rank #1, score: 0.772) from 2 ranked candidates. Scoring weights: review_count 50%, rating 30%, price_proximity 20%",
+      "metadata": {
+        "ranking_criteria": {
+          "primary": "review_count",
+          "secondary": "rating",
+          "tertiary": "price_proximity"
+        },
+        "ranking_weights": {
+          "review_count": 0.5,
+          "rating": 0.3,
+          "price_proximity": 0.2
+        },
+        "ranked_candidates": [
+          {
+            "asin": "B0COMP01",
+            "title": "HydroFlask 32oz Wide Mouth",
+            "metrics": {
+              "price": 44.99,
+              "rating": 4.5,
+              "reviews": 8932
+            },
+            "score_breakdown": {
+              "review_count_score": 0.8932,
+              "rating_score": 0.75,
+              "price_proximity_score": 0.4998332777592529
+            },
+            "total_score": 0.7715666555518506,
+            "rank": 1
+          },
+          {
+            "asin": "B0COMP02",
+            "title": "Yeti Rambler 26oz",
+            "metrics": {
+              "price": 34.99,
+              "rating": 4.4,
+              "reviews": 5621
+            },
+            "score_breakdown": {
+              "review_count_score": 0.5621,
+              "rating_score": 0.7000000000000002,
+              "price_proximity_score": 0.8332777592530842
+            },
+            "total_score": 0.657705551850617,
+            "rank": 2
+          }
+        ]
+      },
+      "timestamp": "2025-12-29T20:04:45.963239",
+      "duration_ms": 0.030040740966796875
+    }
+  ],
+  "started_at": "2025-12-29T20:04:45.652594",
+  "ended_at": "2025-12-29T20:04:45.963246",
+  "metadata": {
+    "reference_product_id": "DEMO-Stainless "
+  }
+}
