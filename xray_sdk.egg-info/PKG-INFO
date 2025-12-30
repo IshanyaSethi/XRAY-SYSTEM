@@ -1,7 +1,0 @@
-Metadata-Version: 2.4
-Name: xray-sdk
-Version: 1.0.0
-Summary: X-Ray SDK for debugging multi-step algorithmic systems
-Requires-Python: >=3.10
-Dynamic: requires-python
-Dynamic: summary
