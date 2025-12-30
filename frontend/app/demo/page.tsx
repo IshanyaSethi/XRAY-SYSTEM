@@ -406,7 +406,7 @@ export default function DemoPage() {
               )}
             </CardContent>
           </Card>
-        </Card>
+        </div>
 
         <Card className="mt-6">
           <CardHeader>
